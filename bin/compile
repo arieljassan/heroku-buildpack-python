@@ -234,6 +234,24 @@ puts-step "Installing dependencies using Pip ($PIP_VERSION)"
 [ ! "$FRESH_PYTHON" ] && bpwatch stop pip_install
 [ "$FRESH_PYTHON" ] && bpwatch stop pip_install_first
 
+
+#              #
+# Install hdf5 #
+#              #
+
+bpwatch start install_hdf5
+  WORKING_DIR=$(pwd)
+  puts-step "Installing hdf5"
+  cd $ROOT_DIR/vendor/
+  tar xf hdf5-1.8.12.tar
+  cd $ROOT_DIR/vendor/hdf5-1.8.12/
+  ./configure --enable-hl --enable-shared
+  make
+  make install  
+  cd $WORKING_DIR
+bpwatch stop install_hdf5
+
+
 # Django collectstatic support.
 bpwatch start collectstatic
   sub-env $BIN_DIR/steps/collectstatic
