@@ -245,7 +245,7 @@ bpwatch start install_hdf5
   cd $ROOT_DIR/vendor/
   tar xf hdf5-1.8.12.tar
   cd $ROOT_DIR/vendor/hdf5-1.8.12/
-  ./configure --enable-hl --enable-shared
+  ./configure --prefix=$CACHE_DIR --enable-hl --enable-shared CPPFLAGS=-I/$CACHE_DIR/include LDDFLAGS=-L/$CACHE_DIR/lib
   make
   make install  
   cd $WORKING_DIR
@@ -262,7 +262,7 @@ bpwatch start install_h5py
   cd $ROOT_DIR/vendor/
   tar zxf h5py-2.3.0.tar.gz
   cd $ROOT_DIR/vendor/h5py-2.3.0/
-  python setup.py build
+  python setup.py build --hdf5=$CACHE_DIR
   python setup.py install
   cd $WORKING_DIR
 bpwatch stop install_h5py
