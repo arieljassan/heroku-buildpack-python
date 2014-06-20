@@ -277,16 +277,18 @@ bpwatch stop install_h5py
 
 bpwatch start install_netcdf
   WORKING_DIR=$(pwd)
+  cd $BUILD_DIR
+  mkdir netcdf
+  NETCDF_DIR=$BUILD_DIR/netcdf
   puts-step "Installing netcdf"
   cd $ROOT_DIR/vendor/
   tar zxf netcdf-4.3.2.tar.gz
   cd $ROOT_DIR/vendor/netcdf-4.3.2/
-  ./configure --enable-netcdf-4 --enable-shared CPPFLAGS="-I$HDF5_DIR/include" LDFLAGS="-L$HDF5_DIR/lib"
+  ./configure --prefix=$NETCDF_DIR --enable-netcdf-4 --enable-shared CPPFLAGS="-I$HDF5_DIR/include" LDFLAGS="-L$HDF5_DIR/lib"
   make
   make install
   cd $WORKING_DIR
 bpwatch stop install_netcdf
-
 
 
 # Django collectstatic support.
