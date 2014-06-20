@@ -248,8 +248,8 @@ bpwatch start install_hdf5
   tar xf hdf5-1.8.12.tar
   cd $ROOT_DIR/vendor/hdf5-1.8.12/
   ./configure --prefix=$HDF5_DIR --enable-hl --enable-shared 
-  make
-  make install  
+  # make
+  # make install
   cd $WORKING_DIR
 bpwatch stop install_hdf5
 
@@ -264,8 +264,9 @@ bpwatch start install_h5py
   cd $ROOT_DIR/vendor/
   tar zxf h5py-2.3.0.tar.gz
   cd $ROOT_DIR/vendor/h5py-2.3.0/
-  python setup.py build --hdf5=$HDF5_DIR
-  python setup.py install
+  # python setup.py build --hdf5=$HDF5_DIR
+  # python setup.py install
+  echo ------ HDF5_DIR $HDF5_DIR
   ls $HDF5_DIR
   cd $WORKING_DIR
 bpwatch stop install_h5py
