@@ -269,6 +269,21 @@ bpwatch start install_h5py
   cd $WORKING_DIR
 bpwatch stop install_h5py
 
+#                 #
+# Install netcdf  #
+#                 #
+
+bpwatch start install_netcdf
+  WORKING_DIR=$(pwd)
+  puts-step "Installing netcdf"
+  cd $ROOT_DIR/vendor/
+  tar zxf netcdf-4.3.2.tar.gz
+  cd $ROOT_DIR/vendor/netcdf-4.3.2/
+  ./configure --enable-netcdf-4 --enable-shared CPPFLAGS="-I $HDF5_DIR/include" LDFLAGS="-L $HDF5_DIR/lib"
+  make
+  make install
+  cd $WORKING_DIR
+bpwatch stop install_netcdf
 
 
 
