@@ -17,7 +17,6 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
-
 CACHED_DIRS=".heroku"
 
 # Static configurations for virtualenv caches.
@@ -241,11 +240,14 @@ puts-step "Installing dependencies using Pip ($PIP_VERSION)"
 
 bpwatch start install_hdf5
   WORKING_DIR=$(pwd)
+  cd $BUILD_DIR
+  mkdir HDF5
+  HDF5_DIR=$BUILD_DIR/HDF5
   puts-step "Installing hdf5"
   cd $ROOT_DIR/vendor/
   tar xf hdf5-1.8.12.tar
   cd $ROOT_DIR/vendor/hdf5-1.8.12/
-  ./configure --prefix=/usr/local --enable-hl --enable-shared CPPFLAGS=-I/usr/local/include LDDFLAGS=-L/usr/local/lib
+  ./configure --prefix=HDF5_DIR --enable-hl --enable-shared
   make
   make install  
   cd $WORKING_DIR
@@ -262,7 +264,7 @@ bpwatch start install_h5py
   cd $ROOT_DIR/vendor/
   tar zxf h5py-2.3.0.tar.gz
   cd $ROOT_DIR/vendor/h5py-2.3.0/
-  python setup.py build --hdf5=/usr/local
+  python setup.py build --hdf5=$HDF5_DIR
   python setup.py install
   cd $WORKING_DIR
 bpwatch stop install_h5py
