@@ -247,7 +247,7 @@ bpwatch start install_hdf5
   cd $ROOT_DIR/vendor/
   tar xf hdf5-1.8.12.tar
   cd $ROOT_DIR/vendor/hdf5-1.8.12/
-  ./configure --prefix=HDF5_DIR --enable-hl --enable-shared
+  ./configure --prefix=$HDF5_DIR --enable-hl --enable-shared
   make
   make install  
   cd $WORKING_DIR
