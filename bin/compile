@@ -238,57 +238,57 @@ puts-step "Installing dependencies using Pip ($PIP_VERSION)"
 # Install hdf5 #
 #              #
 
-bpwatch start install_hdf5
-  WORKING_DIR=$(pwd)
-  cd $BUILD_DIR
-  mkdir HDF5
-  HDF5_DIR=$BUILD_DIR/HDF5
-  puts-step "Installing hdf5"
-  cd $ROOT_DIR/vendor/
-  tar xf hdf5-1.8.12.tar
-  cd $ROOT_DIR/vendor/hdf5-1.8.12/
-  ./configure --prefix=$HDF5_DIR --enable-hl --enable-shared 
-  make
-  make install
-  cd $WORKING_DIR
-bpwatch stop install_hdf5
+# bpwatch start install_hdf5
+#   WORKING_DIR=$(pwd)
+#   cd $BUILD_DIR
+#   mkdir HDF5
+#   HDF5_DIR=$BUILD_DIR/HDF5
+#   puts-step "Installing hdf5"
+#   cd $ROOT_DIR/vendor/
+#   tar xf hdf5-1.8.12.tar
+#   cd $ROOT_DIR/vendor/hdf5-1.8.12/
+#   ./configure --prefix=$HDF5_DIR --enable-hl --enable-shared
+#   make
+#   make install
+#   cd $WORKING_DIR
+# bpwatch stop install_hdf5
 
 
 #              #
 # Install h5py #
 #              #
 
-bpwatch start install_h5py
-  WORKING_DIR=$(pwd)
-  puts-step "Installing h5py"
-  cd $ROOT_DIR/vendor/
-  tar zxf h5py-2.3.0.tar.gz
-  cd $ROOT_DIR/vendor/h5py-2.3.0/
-  python setup.py build --hdf5=$HDF5_DIR
-  python setup.py install
-  echo ------ HDF5_DIR $HDF5_DIR
-  ls $HDF5_DIR
-  cd $WORKING_DIR
-bpwatch stop install_h5py
+# bpwatch start install_h5py
+#   WORKING_DIR=$(pwd)
+#   puts-step "Installing h5py"
+#   cd $ROOT_DIR/vendor/
+#   tar zxf h5py-2.3.0.tar.gz
+#   cd $ROOT_DIR/vendor/h5py-2.3.0/
+#   python setup.py build --hdf5=$HDF5_DIR
+#   python setup.py install
+#   echo ------ HDF5_DIR $HDF5_DIR
+#   ls $HDF5_DIR
+#   cd $WORKING_DIR
+# bpwatch stop install_h5py
 
 #                 #
 # Install netcdf  #
 #                 #
 
-bpwatch start install_netcdf
-  WORKING_DIR=$(pwd)
-  cd $BUILD_DIR
-  mkdir netcdf
-  NETCDF_DIR=$BUILD_DIR/netcdf
-  puts-step "Installing netcdf"
-  cd $ROOT_DIR/vendor/
-  tar zxf netcdf-4.3.2.tar.gz
-  cd $ROOT_DIR/vendor/netcdf-4.3.2/
-  ./configure --prefix=$NETCDF_DIR --enable-netcdf-4 --enable-shared CPPFLAGS="-I$HDF5_DIR/include" LDFLAGS="-L$HDF5_DIR/lib"
-  make
-  make install
-  cd $WORKING_DIR
-bpwatch stop install_netcdf
+# bpwatch start install_netcdf
+#   WORKING_DIR=$(pwd)
+#   cd $BUILD_DIR
+#   mkdir netcdf
+#   NETCDF_DIR=$BUILD_DIR/netcdf
+#   puts-step "Installing netcdf"
+#   cd $ROOT_DIR/vendor/
+#   tar zxf netcdf-4.3.2.tar.gz
+#   cd $ROOT_DIR/vendor/netcdf-4.3.2/
+#   ./configure --prefix=$NETCDF_DIR --enable-netcdf-4 --enable-shared CPPFLAGS="-I$HDF5_DIR/include" LDFLAGS="-L$HDF5_DIR/lib"
+#   make
+#   make install
+#   cd $WORKING_DIR
+# bpwatch stop install_netcdf
 
 #                  #
 # Install netCDF4  #
@@ -302,7 +302,7 @@ bpwatch start install_netCDF4
   puts-step "Installing netCDF4"
   cd $ROOT_DIR/vendor/
   tar zxf netCDF4-1.0.7a.tar.gz
-  cd $ROOT_DIR/vendor/netCDF4-1.0.7a/
+  cd $ROOT_DIR/vendor/netCDF4-1.0.7/
   python setup.py build
   python setup.py install
   cd $WORKING_DIR
