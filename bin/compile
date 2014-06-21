@@ -301,9 +301,9 @@ bpwatch start install_netCDF4
   # NETCDF_DIR=$BUILD_DIR/netcdf
   puts-step "Installing netCDF4"
   cd $ROOT_DIR/vendor/
-  tar zxf netCDF4-1.0.7.tar.gz
-  cd $ROOT_DIR/vendor/netCDF4-1.0.7/
-  python setup.py build --HDF5_dir=$HDF5_DIR 
+  tar zxf netCDF4-1.0.7a.tar.gz
+  cd $ROOT_DIR/vendor/netCDF4-1.0.7a/
+  python setup.py build
   python setup.py install
   cd $WORKING_DIR
 bpwatch stop install_netCDF4
