@@ -258,18 +258,18 @@ bpwatch stop install_hdf5
 # Install h5py #
 #              #
 
-bpwatch start install_h5py
-  WORKING_DIR=$(pwd)
-  puts-step "Installing h5py"
-  cd $ROOT_DIR/vendor/
-  tar zxf h5py-2.3.0.tar.gz
-  cd $ROOT_DIR/vendor/h5py-2.3.0/
-  python setup.py build --hdf5=$HDF5_DIR
-  python setup.py install
-  echo ------ HDF5_DIR $HDF5_DIR
-  ls $HDF5_DIR
-  cd $WORKING_DIR
-bpwatch stop install_h5py
+# bpwatch start install_h5py
+#   WORKING_DIR=$(pwd)
+#   puts-step "Installing h5py"
+#   cd $ROOT_DIR/vendor/
+#   tar zxf h5py-2.3.0.tar.gz
+#   cd $ROOT_DIR/vendor/h5py-2.3.0/
+#   python setup.py build --hdf5=$HDF5_DIR
+#   python setup.py install
+#   echo ------ HDF5_DIR $HDF5_DIR
+#   ls $HDF5_DIR
+#   cd $WORKING_DIR
+# bpwatch stop install_h5py
 
 #                 #
 # Install netcdf  #
